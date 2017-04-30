@@ -1,0 +1,15 @@
+#!/usr/bin/env boot
+
+(set-env! :dependencies '[[org.clojure/clojure "1.8.0"]
+                          [ring/ring-core "1.5.1"]
+                          [ring/ring-jetty-adapter "1.5.1"]])
+
+(require '[ring.adapter.jetty :refer [run-jetty]]
+         '[ring.middleware.cookies :refer [wrap-cookies]])
+
+(defn handler [request]
+  (println (:cookies request))
+  {:status 200})
+
+(defn -main [& args]
+  (run-jetty (wrap-cookies handler) {:port 8080}))
