@@ -55,6 +55,6 @@ Use a checkmark ✓ if the issues are just ignored and the valid cookies are mad
 | [express](/exress) | javascrit |✓|✓|✓|Systematically drops invalid cookies |
 | [bottlepy](/bottlepy) | python |✓|✗|✗| Discards the entire header |
 | [Flask](/flask) | python |✓|✗|✗| Does not discard, but munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
-| [ring](/ring/cookies) | clojure |✓|✓| |
+| [ring](/ring/cookies) | clojure |✓|✓|✓| Discards invalid values `{SID {:value 31d4d96e407aad42}, lang {:value en-US}}` |
 | example for copy/paste |✓✗|✓✗|✓✗|✓✗| |
 
