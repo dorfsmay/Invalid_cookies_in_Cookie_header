@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func cookies(w http.ResponseWriter, r *http.Request) {
@@ -13,6 +15,7 @@ func cookies(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", cookies)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	router := mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/", cookies).Methods("GET")
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
