@@ -40,6 +40,15 @@ Provide a minimalist example of code using your favourite library which demonstr
 ### Testing
 Send a request with an invalid cookie between two valid cookies, and one request with only valid cookies but terminated with a semi-colon:
 
-`curl -b 'SID=31d4d96e407aad42; muffin ; lang=en-US;' localhost:8080`
+* ending with a semi-column: `curl -b 'SID=31d4d96e407aad42; lang=en-US;' localhost:8080`
+* invalid cookies: `curl -b 'SID=31d4d96e407aad42; muffin ; lang=en-US;' localhost:8080`
 
-`curl -b 'SID=31d4d96e407aad42; lang=en-US;' localhost:8080`
+## List of servers, libraries and results
+
+Use a checkmark ✓ if the issues are just ignored and the valid cookies are made available, and a crossmark ✗ is the entire header is discarded (no cookie available).
+
+| server/library | language | ending w/ ; | invalid cookie | comments
+|---|:---:|:---:|:---:|---|
+| [bottlepy](/bottlepy) | python |✓|✗| |
+| example for copy/paste |✓✗|✓✗|✓✗| |
+
