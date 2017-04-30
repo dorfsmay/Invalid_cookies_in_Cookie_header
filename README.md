@@ -53,5 +53,6 @@ Use a checkmark ✓ if the issues are just ignored and the valid cookies are mad
 | [bottlepy](/bottlepy) | python |✓|✗| |
 | [Flask](/flask) | python |✓|✗| Does not discard, but the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
 | [pure go](/pure_go) | golang |✓|✓| Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
+| [ring](/ring/cookies) | clojure |✓|✓| |
 | example for copy/paste |✓✗|✓✗|✓✗| |
 
