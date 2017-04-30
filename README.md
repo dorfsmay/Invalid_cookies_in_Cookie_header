@@ -50,5 +50,6 @@ Use a checkmark ✓ if the issues are just ignored and the valid cookies are mad
 | server/library | language | ending w/ ; | invalid cookie | comments
 |---|:---:|:---:|:---:|---|
 | [bottlepy](/bottlepy) | python |✓|✗| |
+| [Flask](/flask) | python |✓|✗| Does not discard, but the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
 | example for copy/paste |✓✗|✓✗|✓✗| |
 
