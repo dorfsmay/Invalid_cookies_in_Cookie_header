@@ -41,17 +41,19 @@ Provide a minimalist example of code using your favourite library which demonstr
 Send a request with an invalid cookie between two valid cookies, and one request with only valid cookies but terminated with a semi-colon:
 
 * ending with a semi-column: `curl -b 'SID=31d4d96e407aad42; lang=en-US;' localhost:8080`
-* invalid cookies: `curl -b 'SID=31d4d96e407aad42; muffin ; lang=en-US;' localhost:8080`
+* invalid cookie: `curl -b 'SID=31d4d96e407aad42; muffin ; lang=en-US;' localhost:8080`
+* invalid cookies with spaces: `curl -b 'SID=31d4d96e407aad42; muffin crumpet cupcake  ; lang=en-US;' localhost:8080`
 
 ## List of servers, libraries and results
 
 Use a checkmark ✓ if the issues are just ignored and the valid cookies are made available, and a crossmark ✗ is the entire header is discarded (no cookie available).
 
-| server/library | language | ending w/ ; | invalid cookie | comments
-|---|:---:|:---:|:---:|---|
-| [express](/exress) | javascrit |✓|✓| |
-| [bottlepy](/bottlepy) | python |✓|✗| |
-| [Flask](/flask) | python |✓|✗| Does not discard, but the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
-| [pure go](/pure_go) | golang |✓|✓| Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
-| example for copy/paste |✓✗|✓✗|✓✗| |
+| server/library | language | ending w/ ; | invalid cookie | invalid cookie with spaces  | comments
+|---|:---:|:---:|:---:|:---:|---|
+| [pure go](/pure_go) | golang |✓|✓|✓| Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
+| [gorilla go](/gorilla_go) | golang |✓|✓|✓| same as pure_go|
+| [express](/exress) | javascrit |✓|✓|✓|Systematically drops invalid cookies |
+| [bottlepy](/bottlepy) | python |✓|✗|✗| Discards the entire header |
+| [Flask](/flask) | python |✓|✗|✗| Does not discard, but munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
+| example for copy/paste |✓✗|✓✗|✓✗|✓✗| |
 
