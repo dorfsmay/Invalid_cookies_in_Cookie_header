@@ -46,15 +46,20 @@ Send a request with an invalid cookie between two valid cookies, and one request
 
 ## List of servers, libraries and results
 
-Use a checkmark ✓ if the issues are just ignored and the valid cookies are made available, and a crossmark ✗ is the entire header is discarded (no cookie available).
+Use a checkmark ✓/✗ if ending a cookie with a semi-colon is accepted.
 
-| server/library | language | ending w/ ; | invalid cookie | invalid cookie with spaces  | comments
+Use "discarded", "set as name" or "set as value" to report what is done with invalid cookies.
+
+... ORDER BY language, library;
+
+| server/library | language | ending w/ ; | valid cookies | invalid cookie | comments
 |---|:---:|:---:|:---:|:---:|---|
-| [pure go](/pure_go) | golang |✓|✓|✓| Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
-| [gorilla go](/gorilla_go) | golang |✓|✓|✓| same as pure_go|
-| [express](/exress) | javascrit |✓|✓|✓|Systematically drops invalid cookies |
-| [bottlepy](/bottlepy) | python |✓|✗|✗| Discards the entire header |
-| [Flask](/flask) | python |✓|✗|✗| Does not discard, but munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
-| [ring](/ring/cookies) | clojure |✓|✓|✓| Discards invalid values `{SID {:value 31d4d96e407aad42}, lang {:value en-US}}` |
-| example for copy/paste |✓✗|✓✗|✓✗|✓✗| |
+| [ring](/ring/cookies) | clojure    |✓| kept      | discarded    | Discards invalid values `{SID {:value 31d4d96e407aad42}, lang {:value en-US}}` |
+| [pure go](/pure_go) | golang       |✓| kept      | set as name  | Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
+| [gorilla go](/gorilla_go) | golang |✓| kept      | set as name  | same as pure_go |
+| [express](/exress) | javascrit     |✓| kept      | discarded    | Systematically drops invalid cookies |
+| [django](/django) | python         |✓| kept      | set as value | |
+| [bottlepy](/bottlepy) | python     |✓| discarded | discarded    | Discards the entire header |
+| [Flask](/flask) | python           |✓| munged    | munged       | Munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
+| example for copy/paste            |✓✗|           |              | |
 
