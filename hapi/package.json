@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "hapi": "^16.1.1"
+  }
+}
