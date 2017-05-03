@@ -57,7 +57,7 @@ Please make sure you "ORDER BY language, library;" when adding rows to this tabl
 | [ring](/ring/cookies) | clojure    |✓| kept      | discarded    | Discards invalid values `{SID {:value 31d4d96e407aad42}, lang {:value en-US}}` |
 | [pure go](/pure_go) | golang       |✓| kept      | set as name  | Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
 | [gorilla go](/gorilla_go) | golang |✓| kept      | set as name  | same as pure_go |
-| [express](/exress) | javascrit     |✓| kept      | discarded    | Systematically drops invalid cookies |
+| [express](/exress) | javascript     |✓| kept      | discarded    | Systematically drops invalid cookies |
 | [django](/django) | python         |✓| kept      | set as value | |
 | [bottlepy](/bottlepy) | python     |✓| discarded | discarded    | Discards the entire header |
 | [Flask](/flask) | python           |✓| munged    | munged       | Munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
