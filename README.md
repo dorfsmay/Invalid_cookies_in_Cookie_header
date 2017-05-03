@@ -50,7 +50,7 @@ Use a checkmark ✓/✗ if ending a cookie with a semi-colon is accepted.
 
 Use "discarded", "set as name" or "set as value" to report what is done with invalid cookies.
 
-... ORDER BY language, library;
+Please make sure you "ORDER BY language, library;" when adding rows to this table.
 
 | server/library | language | ending w/ ; | valid cookies | invalid cookie | comments
 |---|:---:|:---:|:---:|:---:|---|
@@ -63,3 +63,15 @@ Use "discarded", "set as name" or "set as value" to report what is done with inv
 | [Flask](/flask) | python           |✓| munged    | munged       | Munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
 | example for copy/paste            |✓✗|           |              | |
 
+
+## Value only cookie
+It seems that in the early days of the web it was acceptable to use a single cookie without a name. I found one article and a few references in online forums to this behaviour:
+
+* 2009: https://www.nczonline.net/blog/2009/05/05/http-cookies-explained/
+  > You can, in fact, specify a string without an equals sign and it will be stored just the same.
+
+Interestingly enough recent versions of both Chromium and Firefox supports this behaviour:
+1. browse to https://api.zioup.com/nonamecookie (This sends a response with header "SetCookie: Look_ma_no_name"
+1. browse to https://api.zioup.com/headers
+
+Observe that the Cookie header is now "Cookie: Look_ma_no_name; BeenThere=1". This probably explains Django's behaviour in setting strings with no equal sign as value. This is interesting from a historical persepective, but given all the security issues due to cookies, it is probably better to simply discard cookies with no equal sign, and probably why the major frameworks are doing so (express, ring).
