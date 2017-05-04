@@ -34,6 +34,9 @@ The latter follows [Postel](https://en.wikipedia.org/wiki/Jon_Postel)'s law, the
 ## Goal
 The goal of this survey is to list the behaviours of how well-known Web Application Servers and libraries when receiving a Cookie header containing a mixture of valie and invalid coookies.
 
+## Contributors
+Thanks to all the contributors, regardless of how small the contribution, this effort requires skills in different programing languages and with different libraries, which can only be achieved with a large number of contributors.
+
 ## How to crontribute
 Provide a minimalist example of code using your favourite library which demonstrates its behaviour Be conservative in what you send, be liberal in what you accept, and add the result to this file.
 
@@ -62,7 +65,7 @@ Please make sure you "ORDER BY language, library;" when adding rows to this tabl
 | [django](/django) | python         |✓| kept      | set as value | |
 | [bottlepy](/bottlepy) | python     |✓| discarded | discarded    | Discards the entire header |
 | [Flask](/flask) | python           |✓| munged    | munged       | Munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
-| example for copy/paste            |✓✗|           |              | |
+| example for copy/paste    |       |✓✗|           |              | |
 
 
 ## Value only cookie
