@@ -37,7 +37,7 @@ The goal of this survey is to list the behaviours of how well-known Web Applicat
 ## Contributors
 Thanks to all the contributors, regardless of how small the contribution, this effort requires skills in different programing languages and with different libraries, which can only be achieved with a large number of contributors.
 
-## How to crontribute
+## How to contribute
 Provide a minimalist example of code, as small as possible, using your favourite library which:
 * Listens on port 8080
 * Returns http 200
