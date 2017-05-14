@@ -68,7 +68,8 @@ Please make sure you "ORDER BY language, library;" when adding rows to this tabl
 | [hapi](/hapi) | javascript         |✓| reject    | reject       | Very strict interpretation of the RFC. Reject requests with malformed cookie `{"statusCode":400,"error":"Bad Request","message":"Invalid cookie value"}`, even for a space between the value and the semi-colon.|
 | [django](/django) | python         |✓| kept      | set as value | |
 | [bottlepy](/bottlepy) | python     |✓| discarded | discarded    | Discards the entire header |
-| [Flask](/flask) | python           |✓| munged    | munged       | Munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
+| [Flask](/flask) | python           |✓| munged    | munged       | Same as its underlying librairy: werkzeug|
+| [werkzeug](/werkzeug) | python     |✓| munged    | munged       | Munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
 | example for copy/paste    |       |✓✗|           |              | |
 
 
