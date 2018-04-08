@@ -59,18 +59,18 @@ Use "discarded", "set as name" or "set as value" to report what is done with inv
 
 Please make sure you "ORDER BY language, library;" when adding rows to this table.
 
-| server/library | language | ending w/ ; | valid cookies | invalid cookie | comments
-|---|:---:|:---:|:---:|:---:|---|
-| [ring](/ring/cookies) | clojure    |✓| kept      | discarded    | Discards invalid values `{SID {:value 31d4d96e407aad42}, lang {:value en-US}}` |
-| [pure go](/pure_go) | golang       |✓| kept      | set as name  | Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
-| [gorilla go](/gorilla_go) | golang |✓| kept      | set as name  | same as pure_go |
-| [express](/exress) | javascript    |✓| kept      | discarded    | Systematically drops invalid cookies |
-| [hapi](/hapi) | javascript         |✓| reject    | reject       | Very strict interpretation of the RFC. Reject requests with malformed cookie `{"statusCode":400,"error":"Bad Request","message":"Invalid cookie value"}`, even for a space between the value and the semi-colon.|
-| [django](/django) | python         |✓| kept      | set as value | |
-| [bottlepy](/bottlepy) | python     |✓| discarded | discarded    | Discards the entire header |
-| [Flask](/flask) | python           |✓| munged    | munged       | Same as its underlying librairy: werkzeug|
-| [werkzeug](/werkzeug) | python     |✓| munged    | munged       | Munges the bad and good cookie together: `{'SID': '31d4d96e407aad42', 'muffin ; lang': 'en-US'}`|
-| example for copy/paste    |       |✓✗|           |              | |
+| server/library | version | language | ending w/ ; | valid cookies | invalid cookie | comments
+|---|:---:|:---:|:---:|:---:|:---:|---|
+| [ring](/ring/cookies) | | clojure    |✓| kept      | discarded    | Discards invalid values `{SID {:value 31d4d96e407aad42}, lang {:value en-US}}` |
+| [pure go](/pure_go) | | golang       |✓| kept      | set as name  | Does not discard, assumes K/V pairs and adds an empty value to the invalid cookie value: `[SID=31d4d96e407aad42 lang=en-US][SID=31d4d96e407aad42 muffin= lang=en-US]`|
+| [gorilla go](/gorilla_go) | | golang |✓| kept      | set as name  | same as pure_go |
+| [express](/exress) | | javascript    |✓| kept      | discarded    | Systematically drops invalid cookies |
+| [hapi](/hapi) | | javascript         |✓| reject    | reject       | Very strict interpretation of the RFC. Reject requests with malformed cookie `{"statusCode":400,"error":"Bad Request","message":"Invalid cookie value"}`, even for a space between the value and the semi-colon.|
+| [django](/django) | | python         |✓| kept      | set as value | |
+| [bottlepy](/bottlepy) | | python     |✓| discarded | discarded    | Discards the entire header |
+| [Flask](/flask) | 0.12.2 | python           |✓| kept      | set as name  | Set invalid cookie as key with empty value |
+| [werkzeug](/werkzeug) | 0.14.1 | python     |✓| kept      | set as name  | Set invalid cookie as key with empty value |
+| example for copy/paste    |    |       |✓✗|           |              | |
 
 
 ## Value only cookie
@@ -80,7 +80,7 @@ It seems that in the early days of the web it was acceptable to use a single coo
   > You can, in fact, specify a string without an equals sign and it will be stored just the same.
 
 Interestingly enough recent versions of both Chromium and Firefox supports this behaviour:
-1. browse to https://api.zioup.com/nonamecookie (This sends a response with header "SetCookie: Look_ma_no_name"
+1. browse to https://api.zioup.com/nonamecookie (This sends a response with header "SetCookie: Look_ma_no_name")
 1. browse to https://api.zioup.com/headers
 
 Observe that the Cookie header is now "Cookie: Look_ma_no_name; BeenThere=1". This probably explains Django's behaviour in setting strings with no equal sign as value. This is interesting from a historical persepective, but given all the security issues due to cookies, it is probably better to simply discard cookies with no equal sign, and probably why the major frameworks are doing so (express, ring).
