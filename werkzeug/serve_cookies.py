@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import sys
 from werkzeug.wrappers import Request, Response
@@ -6,7 +6,10 @@ from werkzeug.wrappers import Request, Response
 @Request.application
 def application(request):
     print(request.cookies)
-    return Response('Hello World!\n')
+    response_text = 'Cookies:\n'
+    response_text += str(request.cookies)
+    response_text += '\n'
+    return Response(response_text)
 
 if __name__ == '__main__':
     from werkzeug.serving import run_simple
