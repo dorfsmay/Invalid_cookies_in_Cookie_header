@@ -66,8 +66,8 @@ Please make sure you "ORDER BY language, library;" when adding rows to this tabl
 | [gorilla go](/gorilla_go) | | golang |✓| kept      | set as name  | same as pure_go |
 | [express](/exress) | | javascript    |✓| kept      | discarded    | Systematically drops invalid cookies |
 | [hapi](/hapi) | | javascript         |✓| reject    | reject       | Very strict interpretation of the RFC. Reject requests with malformed cookie `{"statusCode":400,"error":"Bad Request","message":"Invalid cookie value"}`, even for a space between the value and the semi-colon.|
-| [django](/django) | | python         |✓| kept      | set as value | |
-| [bottlepy](/bottlepy) | | python     |✓| discarded | discarded    | Discards the entire header |
+| [django](/django) | 2.0.4 | python         |✓| kept      | set as value | |
+| [bottlepy](/bottlepy) | 0.12.13 | python     |✓| discarded | discarded    | Discards the entire header |
 | [Flask](/flask) | 0.12.2 | python           |✓| kept      | set as name  | Set invalid cookie as key with empty value |
 | [werkzeug](/werkzeug) | 0.14.1 | python     |✓| kept      | set as name  | Set invalid cookie as key with empty value |
 | example for copy/paste    |    |       |✓✗|           |              | |
