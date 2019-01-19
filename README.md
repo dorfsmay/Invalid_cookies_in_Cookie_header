@@ -29,10 +29,10 @@ to:
 * accept all valid individual cookies within the header, discarding any invalid string between any set of two semi-colon
 * accept the last cookie in the header, regardless of being terminated by a semi-colon or not
 
-The latter follows [Postel](https://en.wikipedia.org/wiki/Jon_Postel)'s law, the [Robustness principle](https://en.wikipedia.org/wiki/Robustness_principle)": "Be conservative in what you send, be liberal in what you accept". Cookies are often injected, therefore added to an existing header in most cases, by intermediary apps servers, security appliances, network devices, proxies, Load Balnacers etc... between the User-Agent and the server. Bugs in any one of these intermediates could inject an invalid cookie. The former behaviour leads to the entire Cookie header to be discarded. 
+The latter follows [Postel](https://en.wikipedia.org/wiki/Jon_Postel)'s law, the [Robustness principle](https://en.wikipedia.org/wiki/Robustness_principle)": "Be conservative in what you send, be liberal in what you accept". Cookies are often injected, therefore added to an existing header in most cases, by intermediary apps servers, security appliances, network devices, proxies, Load Balancers etc... between the User agent and the server. Bugs in any one of these intermediates could inject an invalid cookie. The former behaviour leads to the entire Cookie header to be discarded. 
 
 ## Goal
-The goal of this survey is to list the behaviours of how well-known Web Application Servers and libraries when receiving a Cookie header containing a mixture of valie and invalid coookies.
+The goal of this survey is to list the behaviours of how well-known Web Application Servers and libraries when receiving a Cookie header containing a mixture of valid and invalid coookies.
 
 ## Contributors
 Thanks to all the contributors, regardless of how small the contribution, this effort requires skills in different programing languages and with different libraries, which can only be achieved with a large number of contributors.
